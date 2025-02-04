@@ -13,6 +13,7 @@ builder.Services.AddSwaggerGen();
 // Adicione esta linha para o serviço de autorização
 builder.Services.AddAuthorization();
 
+//builder.Services.AddScoped<IprodutosInterface, ProdutosService>(); // Voçe vai acrescentar apenas isso, e assim pras outras entidades
 builder.Services.AddScoped<IClienteInterface, ClienteService>();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
@@ -36,3 +37,4 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
