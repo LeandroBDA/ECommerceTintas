@@ -70,7 +70,7 @@ namespace ECommerceTintas.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Clientes");
+                    b.ToTable("Clientes", (string)null);
                 });
 #pragma warning restore 612, 618
         }

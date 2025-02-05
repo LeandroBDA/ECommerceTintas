@@ -3,7 +3,7 @@
 public class ClienteModel
 {
     public Guid Id { get; init; } 
-    public string Nome { get; private set; } 
+    public string Nome { get; set; } 
     public int Cpf { get; set; } 
     public string Email { get; set; } 
     public string Senha { get; set; } 
