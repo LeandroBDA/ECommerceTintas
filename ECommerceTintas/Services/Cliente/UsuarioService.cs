@@ -31,6 +31,7 @@ namespace ECommerceTintas.Services.Cliente
                     Email = usuario.Email,
                     DataDeNascimento = usuario.DataDeNascimento,
                     Complemento = usuario.Complemento,
+                    Numero = usuario.Numero,
                     Cep = usuario.Cep,
                     Cidade = usuario.Cidade,
                     Estado = usuario.Estado,
@@ -88,6 +89,7 @@ namespace ECommerceTintas.Services.Cliente
                     Email = usuarioDto.Email,
                     DataDeNascimento = usuarioDto.DataDeNascimento,
                     Complemento = usuarioDto.Complemento,
+                    Numero = usuarioDto.Numero,
                     Cep = usuarioDto.Cep,
                     Cidade = usuarioDto.Cidade,
                     Estado = usuarioDto.Estado,
@@ -178,6 +180,7 @@ namespace ECommerceTintas.Services.Cliente
                 usuarioExistente.Email = atualizarUsuario.Email;
                 usuarioExistente.DataDeNascimento = atualizarUsuario.DataDeNascimento;
                 usuarioExistente.Complemento = atualizarUsuario.Complemento;
+                usuarioExistente.Numero = atualizarUsuario.Numero;
                 usuarioExistente.Cep = atualizarUsuario.Cep;
                 usuarioExistente.Cidade = atualizarUsuario.Cidade;
                 usuarioExistente.Estado = atualizarUsuario.Estado;

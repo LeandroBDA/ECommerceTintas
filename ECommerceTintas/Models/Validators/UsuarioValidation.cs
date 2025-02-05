@@ -47,6 +47,9 @@ public class UsuarioValidation : AbstractValidator<UsuarioModel>
         RuleFor(cliente => cliente.Cep)
             .NotEmpty().WithMessage("O CEP é obrigatório.")
             .Must(ValidarCep).WithMessage("CEP inválido.");
+
+        RuleFor(cliente => cliente.Numero)
+            .NotEmpty().WithMessage("O número é obrigatório");
         
         RuleFor(cliente => cliente.Cidade)
             .NotEmpty().WithMessage("A cidade é obrigatória.")
@@ -81,6 +84,9 @@ public class UsuarioValidation : AbstractValidator<UsuarioModel>
 
             RuleFor(cliente => cliente.Complemento)
                 .MaximumLength(100).WithMessage("O complemento deve ter no máximo 100 caracteres.");
+            
+            RuleFor(cliente => cliente.Numero)
+                .NotEmpty().WithMessage("O número é obrigatório");
 
             RuleFor(cliente => cliente.Cep)
                 .NotEmpty().WithMessage("O CEP é obrigatório.");
