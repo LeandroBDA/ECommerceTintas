@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "x1VE3pZUrX8=",
+  "dgSpecHash": "vwlBf7Q2gLk=",
   "success": true,
   "projectFilePath": "C:\\Users\\intel\\RiderProjects\\ECommerceTintas\\ECommerceTintas\\ECommerceTintas.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\intel\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\intel\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
+    "C:\\Users\\intel\\.nuget\\packages\\fluentvalidation\\9.0.1\\fluentvalidation.9.0.1.nupkg.sha512",
     "C:\\Users\\intel\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\intel\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\intel\\.nuget\\packages\\humanizer.core.af\\2.14.1\\humanizer.core.af.2.14.1.nupkg.sha512",

@@ -14,7 +14,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddAuthorization();
 
 //builder.Services.AddScoped<IprodutosInterface, ProdutosService>(); // Voçe vai acrescentar apenas isso, e assim pras outras entidades
-builder.Services.AddScoped<IClienteInterface, ClienteService>();
+builder.Services.AddScoped<IUsuarioInterface, UsuarioService>();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 {

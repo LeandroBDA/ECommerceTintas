@@ -1,12 +1,12 @@
-﻿namespace ECommerceTintas.Dto.Cliente;
+﻿namespace ECommerceTintas.Dto.Usuario;
 
-public class CadastrarClienteDto
+public class CadastrarUsuarioDto
 {
     public string Nome { get; set; } 
-    public int Cpf { get; set; } 
+    public string Cpf { get; set; } 
     public string Email { get; set; } 
     public string Senha { get; set; } 
-    public int? Telefone { get; set; }
+    public string Telefone { get; set; }
     public DateOnly DataDeNascimento { get; set; }
     public string Endereco { get; set; } 
     public string Complemento { get; set; } 
