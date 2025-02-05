@@ -1,3 +1,4 @@
+using ECommerceTintas.Dto.Cliente;
 using ECommerceTintas.Models;
 using ECommerceTintas.Services.Cliente;
 using Microsoft.AspNetCore.Mvc;
@@ -23,21 +24,35 @@ namespace ECommerceTintas.Controllers
         }
 
         [HttpPost("CadastrarCliente")]
-        public async Task<ActionResult<ResponseModel<ClienteModel>>> CadastrarCliente([FromForm] ClienteModel novoCliente)
+        public async Task<ActionResult<ResponseModel<ClienteModel>>> CadastrarCliente([FromBody] CadastrarClienteDto clienteDto)
         {
-            var resposta = await _clienteInterface.CadastrarCliente(novoCliente);
+            var resposta = await _clienteInterface.CadastrarCliente(clienteDto);
+            return Ok(resposta);
+        }
+        
+        [HttpGet("BuscarClientePorId/{idCliente}")]
+        public async Task<ActionResult<ResponseModel<ClienteDto>>> BuscarClientePorId(Guid idCliente)
+        {
+            var resposta = await _clienteInterface.BuscarClientePorId(idCliente);
+
+            if (!resposta.status)
+            {
+                return NotFound(new { mensagem = resposta.Mensagem });
+            }
+
             return Ok(resposta);
         }
 
+
         [HttpPut("AtualizarCliente/{idCliente}")]
-        public async Task<ActionResult<ResponseModel<ClienteModel>>> AtualizarCliente([FromForm] ClienteModel atualizarCliente, Guid idCliente)
+        public async Task<ActionResult<ResponseModel<ClienteModel>>> AtualizarCliente([FromForm] AtualizarClienteDto atualizarCliente, Guid idCliente)
         {
             var resposta = await _clienteInterface.AtualizarCliente(atualizarCliente, idCliente);
             return Ok(resposta);
         }
 
         [HttpDelete("ExcluirCliente/{idCliente}")]
-        public async Task<ActionResult<ResponseModel<ClienteModel>>> ExcluirCliente(Guid idCliente)
+        public async Task<ActionResult<ResponseModel<ClienteModel>>> ExcluirCliente(ExcluirClienteDto idCliente)
         {
             var resposta = await _clienteInterface.ExcluirCliente(idCliente);
             return Ok(resposta);

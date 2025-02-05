@@ -1,13 +1,13 @@
-﻿using ECommerceTintas.Models;
+﻿using ECommerceTintas.Dto.Cliente;
+using ECommerceTintas.Models;
 
 namespace ECommerceTintas.Services.Cliente;
 
 public interface IClienteInterface
 {
-    Task<ResponseModel<List<ClienteModel>>> ListarClentes();
-    Task<ResponseModel<ClienteModel>> BuscarClientePorId(Guid idCliente);
-    Task<ResponseModel<ClienteModel>> CadastrarCliente(ClienteModel novoCliente);
-    Task<ResponseModel<ClienteModel>> ExcluirCliente(Guid idCliente);
-    Task<ResponseModel<ClienteModel>> AtualizarCliente(ClienteModel atualizarCliente, Guid idcliente);
-    
+    Task<ResponseModel<List<ClienteDto>>> ListarClentes();
+    Task<ResponseModel<ClienteDto>> BuscarClientePorId(Guid idCliente);
+    Task<ResponseModel<ClienteDto>> CadastrarCliente(CadastrarClienteDto novoCliente);
+    Task<ResponseModel<ClienteDto>> ExcluirCliente(ExcluirClienteDto idCliente);
+    Task<ResponseModel<ClienteDto>> AtualizarCliente(AtualizarClienteDto atualizarCliente, Guid idCliente);
 }

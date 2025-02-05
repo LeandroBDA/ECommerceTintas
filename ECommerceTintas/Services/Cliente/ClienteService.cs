@@ -1,4 +1,5 @@
 ﻿using ECommerceTintas.Data;
+using ECommerceTintas.Dto.Cliente;
 using ECommerceTintas.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,17 +13,25 @@ namespace ECommerceTintas.Services.Cliente
         {
             _context = context;
         }
-        
-        public async Task<ResponseModel<List<ClienteModel>>> ListarClentes()
+
+        public async Task<ResponseModel<List<ClienteDto>>> ListarClentes()
         {
-            ResponseModel<List<ClienteModel>> resposta = new ResponseModel<List<ClienteModel>>();
+            var resposta = new ResponseModel<List<ClienteDto>>();
             try
             {
                 var clientes = await _context.Clientes.ToListAsync();
+                
+                var clientesDto = clientes.Select(cliente => new ClienteDto
+                {
+                    Nome = cliente.Nome,
+                    Cpf = cliente.Cpf,
+                    Email = cliente.Email,
+                    Telefone = cliente.Telefone,
+                    Endereco = cliente.Endereco
+                }).ToList();
 
-                resposta.Dados = clientes;
+                resposta.Dados = clientesDto;
                 resposta.Mensagem = "Todos os clientes foram listados";
-
                 return resposta;
             }
             catch (Exception ex)
@@ -33,9 +42,9 @@ namespace ECommerceTintas.Services.Cliente
             }
         }
 
-        public async Task<ResponseModel<ClienteModel>> BuscarClientePorId(Guid idCliente)
+        public async Task<ResponseModel<ClienteDto>> BuscarClientePorId(Guid idCliente)
         {
-            ResponseModel<ClienteModel> resposta = new ResponseModel<ClienteModel>();
+            var resposta = new ResponseModel<ClienteDto>();
             try
             {
                 var cliente = await _context.Clientes.FindAsync(idCliente);
@@ -43,12 +52,19 @@ namespace ECommerceTintas.Services.Cliente
                 {
                     resposta.Mensagem = "Cliente não encontrado";
                     resposta.status = false;
+                    return resposta;
                 }
-                else
+
+                var clienteDto = new ClienteDto
                 {
-                    resposta.Dados = cliente;
-                    resposta.Mensagem = "Cliente encontrado com sucesso";
-                }
+                    Nome = cliente.Nome,
+                    Email = cliente.Email,
+                    Telefone = cliente.Telefone,
+                    Endereco = cliente.Endereco
+                };
+
+                resposta.Dados = clienteDto;
+                resposta.Mensagem = "Cliente encontrado com sucesso";
                 return resposta;
             }
             catch (Exception ex)
@@ -59,17 +75,46 @@ namespace ECommerceTintas.Services.Cliente
             }
         }
 
-        public async Task<ResponseModel<ClienteModel>> CadastrarCliente(ClienteModel novoCliente)
+        public async Task<ResponseModel<ClienteDto>> CadastrarCliente(CadastrarClienteDto clienteDto)
         {
-            ResponseModel<ClienteModel> resposta = new ResponseModel<ClienteModel>();
+            var resposta = new ResponseModel<ClienteDto>();
             try
             {
+                var novoCliente = new ClienteModel
+                {
+                    Nome = clienteDto.Nome,
+                    Cpf = clienteDto.Cpf,
+                    Senha = clienteDto.Senha,
+                    Email = clienteDto.Email,
+                    DataDeNascimento = clienteDto.DataDeNascimento,
+                    Complemento = clienteDto.Complemento,
+                    Cep = clienteDto.Cep,
+                    Cidade = clienteDto.Cidade,
+                    Estado = clienteDto.Estado,
+                    Telefone = clienteDto.Telefone,
+                    Endereco = clienteDto.Endereco
+                };
+
                 await _context.Clientes.AddAsync(novoCliente);
                 await _context.SaveChangesAsync();
 
-                resposta.Dados = novoCliente;
-                resposta.Mensagem = "Cliente cadastrado com sucesso";
+                var clienteResponse = new ClienteDto
+                {
+                    Nome = clienteDto.Nome,
+                    Cpf = clienteDto.Cpf,
+                    Senha = clienteDto.Senha,
+                    Email = clienteDto.Email,
+                    DataDeNascimento = clienteDto.DataDeNascimento,
+                    Complemento = clienteDto.Complemento,
+                    Cep = clienteDto.Cep,
+                    Cidade = clienteDto.Cidade,
+                    Estado = clienteDto.Estado,
+                    Telefone = clienteDto.Telefone,
+                    Endereco = clienteDto.Endereco
+                };
 
+                resposta.Dados = clienteResponse;
+                resposta.Mensagem = "Cliente cadastrado com sucesso";
                 return resposta;
             }
             catch (Exception ex)
@@ -80,9 +125,9 @@ namespace ECommerceTintas.Services.Cliente
             }
         }
 
-        public async Task<ResponseModel<ClienteModel>> ExcluirCliente(Guid idCliente)
+        public async Task<ResponseModel<ClienteDto>> ExcluirCliente(ExcluirClienteDto idCliente)
         {
-            ResponseModel<ClienteModel> resposta = new ResponseModel<ClienteModel>();
+            var resposta = new ResponseModel<ClienteDto>();
             try
             {
                 var cliente = await _context.Clientes.FindAsync(idCliente);
@@ -96,9 +141,23 @@ namespace ECommerceTintas.Services.Cliente
                 _context.Clientes.Remove(cliente);
                 await _context.SaveChangesAsync();
 
-                resposta.Dados = cliente;
-                resposta.Mensagem = "Cliente excluído com sucesso";
+                var clienteDto = new ClienteDto
+                {
+                    Nome = cliente.Nome,
+                    Cpf = cliente.Cpf,
+                    Senha = cliente.Senha,
+                    Email = cliente.Email,
+                    DataDeNascimento = cliente.DataDeNascimento,
+                    Complemento = cliente.Complemento,
+                    Cep = cliente.Cep,
+                    Cidade = cliente.Cidade,
+                    Estado = cliente.Estado,
+                    Telefone = cliente.Telefone,
+                    Endereco = cliente.Endereco
+                };
 
+                resposta.Dados = clienteDto;
+                resposta.Mensagem = "Cliente excluído com sucesso";
                 return resposta;
             }
             catch (Exception ex)
@@ -109,9 +168,9 @@ namespace ECommerceTintas.Services.Cliente
             }
         }
 
-        public async Task<ResponseModel<ClienteModel>> AtualizarCliente(ClienteModel atualizarCliente, Guid idCliente)
+        public async Task<ResponseModel<ClienteDto>> AtualizarCliente(AtualizarClienteDto atualizarCliente, Guid idCliente)
         {
-            ResponseModel<ClienteModel> resposta = new ResponseModel<ClienteModel>();
+            var resposta = new ResponseModel<ClienteDto>();
             try
             {
                 var clienteExistente = await _context.Clientes.FindAsync(idCliente);
@@ -123,16 +182,39 @@ namespace ECommerceTintas.Services.Cliente
                 }
 
                 clienteExistente.Nome = atualizarCliente.Nome;
+                clienteExistente.Cpf = atualizarCliente.Cpf;
+                clienteExistente.Senha = atualizarCliente.Senha;
                 clienteExistente.Email = atualizarCliente.Email;
+                clienteExistente.DataDeNascimento = atualizarCliente.DataDeNascimento;
+                clienteExistente.Complemento = atualizarCliente.Complemento;
+                clienteExistente.Cep = atualizarCliente.Cep;
+                clienteExistente.Cidade = atualizarCliente.Cidade;
+                clienteExistente.Estado = atualizarCliente.Estado;
                 clienteExistente.Telefone = atualizarCliente.Telefone;
-                // Adicione outros campos conforme necessário
+                clienteExistente.Endereco = atualizarCliente.Endereco;
+
 
                 _context.Clientes.Update(clienteExistente);
                 await _context.SaveChangesAsync();
 
-                resposta.Dados = clienteExistente;
-                resposta.Mensagem = "Cliente atualizado com sucesso";
+                var clienteDto = new ClienteDto
+                {
+                 
+                    Nome = clienteExistente.Nome,
+                    Cpf = clienteExistente.Cpf,
+                    Senha = clienteExistente.Senha,
+                    Email = clienteExistente.Email,
+                    DataDeNascimento = clienteExistente.DataDeNascimento,
+                    Complemento = clienteExistente.Complemento,
+                    Cep = clienteExistente.Cep,
+                    Cidade = clienteExistente.Cidade,
+                    Estado = clienteExistente.Estado,
+                    Telefone = clienteExistente.Telefone,
+                    Endereco = clienteExistente.Endereco
+                };
 
+                resposta.Dados = clienteDto;
+                resposta.Mensagem = "Cliente atualizado com sucesso";
                 return resposta;
             }
             catch (Exception ex)
