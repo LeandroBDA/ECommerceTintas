@@ -1,4 +1,5 @@
-﻿using ECommerceTintas.Models.Usuario;
+﻿using ECommerceTintas.Models.Produto;
+using ECommerceTintas.Models.Usuario;
 using Microsoft.EntityFrameworkCore;
 
 namespace ECommerceTintas.Data;
@@ -11,4 +12,5 @@ public class AppDbContext : DbContext
     }
     
     public DbSet<UsuarioModel> Usuarios { get; set; }
+    public DbSet<ProdutoModel> Produtos { get; set; }
 }
