@@ -58,6 +58,7 @@ namespace ECommerceTintas.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("Tipo")
+                        .HasConversion<string>()
                         .HasColumnType("int");
 
                     b.HasKey("Id");
