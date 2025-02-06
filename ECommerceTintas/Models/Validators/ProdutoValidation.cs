@@ -1,5 +1,5 @@
+using ECommerceTintas.Models.Produtos;
 using FluentValidation;
-using ECommerceTintas.Models.Produto;
 
 namespace ECommerceTintas.Models.Validators;
 public class ProdutoValidation : AbstractValidator<ProdutoModel>

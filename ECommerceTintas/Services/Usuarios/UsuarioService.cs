@@ -5,7 +5,7 @@ using ECommerceTintas.Models.Usuario;
 using ECommerceTintas.Models.Validators;
 using Microsoft.EntityFrameworkCore;
 
-namespace ECommerceTintas.Services.Cliente
+namespace ECommerceTintas.Services.Usuarios
 {
     public class UsuarioService : IUsuarioInterface
     {
@@ -51,7 +51,7 @@ namespace ECommerceTintas.Services.Cliente
             }
         }
 
-        public async Task<ResponseModel<UsuarioModel>> BuscarUsuariosPorId(Guid idUsuario)
+        public async Task<ResponseModel<UsuarioModel>> BuscarUsuariosPorId(int idUsuario)
         {
             var resposta = new ResponseModel<UsuarioModel>();
             try
@@ -81,7 +81,7 @@ namespace ECommerceTintas.Services.Cliente
             var resposta = new ResponseModel<UsuarioModel>();
             try
             {
-                var novoCliente = new UsuarioModel
+                var novoUsuario = new UsuarioModel
                 {
                     Nome = usuarioDto.Nome,
                     Cpf = usuarioDto.Cpf,
@@ -98,7 +98,7 @@ namespace ECommerceTintas.Services.Cliente
                 };
 
                 var validator = new UsuarioValidation();
-                var validationResult = validator.Validate(novoCliente);
+                var validationResult = validator.Validate(novoUsuario);
 
                 if (!validationResult.IsValid)
                 {
@@ -108,11 +108,11 @@ namespace ECommerceTintas.Services.Cliente
                     return resposta;
                 }
 
-                await _context.Usuarios.AddAsync(novoCliente);
+                await _context.Usuarios.AddAsync(novoUsuario);
                 await _context.SaveChangesAsync();
 
-                resposta.Dados = novoCliente;
-                resposta.Mensagem = "Cliente cadastrado com sucesso";
+                resposta.Dados = novoUsuario;
+                resposta.Mensagem = "Usuario cadastrado com sucesso";
                 return resposta;
             }
             catch (Exception ex)
@@ -123,7 +123,7 @@ namespace ECommerceTintas.Services.Cliente
             }
         }
 
-        public async Task<ResponseModel<UsuarioModel>> ExcluirUsuario(Guid idUsuario)
+        public async Task<ResponseModel<UsuarioModel>> ExcluirUsuario(int idUsuario)
         {
             var resposta = new ResponseModel<UsuarioModel>();
             try
@@ -151,7 +151,7 @@ namespace ECommerceTintas.Services.Cliente
             }
         }
 
-        public async Task<ResponseModel<UsuarioModel>> AtualizarUsuario(AtualizarUsuarioDto atualizarUsuario, Guid idUsuario)
+        public async Task<ResponseModel<UsuarioModel>> AtualizarUsuario(AtualizarUsuarioDto atualizarUsuario, int idUsuario)
         {
             var resposta = new ResponseModel<UsuarioModel>();
             try
@@ -159,7 +159,7 @@ namespace ECommerceTintas.Services.Cliente
                 var usuarioExistente = await _context.Usuarios.FindAsync(idUsuario);
                 if (usuarioExistente == null)
                 {
-                    resposta.Mensagem = "Cliente não encontrado para atualização";
+                    resposta.Mensagem = "Usuario não encontrado para atualização";
                     resposta.status = false;
                     return resposta;
                 }

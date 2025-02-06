@@ -1,5 +1,6 @@
 using ECommerceTintas.Data;
-using ECommerceTintas.Services.Cliente;
+using ECommerceTintas.Services.Produto;
+using ECommerceTintas.Services.Usuarios;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,7 +14,7 @@ builder.Services.AddSwaggerGen();
 // Adicione esta linha para o serviço de autorização
 builder.Services.AddAuthorization();
 
-//builder.Services.AddScoped<IprodutosInterface, ProdutosService>(); // Voçe vai acrescentar apenas isso, e assim pras outras entidades
+builder.Services.AddScoped<IProdutoInterface, ProdutoService>();
 builder.Services.AddScoped<IUsuarioInterface, UsuarioService>();
 
 builder.Services.AddDbContext<AppDbContext>(options =>

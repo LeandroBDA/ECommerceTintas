@@ -1,6 +1,6 @@
 using ECommerceTintas.Dto.Produto;
 using ECommerceTintas.Models;
-using ECommerceTintas.Models.Produto;
+using ECommerceTintas.Models.Produtos;
 
 namespace ECommerceTintas.Services.Produto
 {

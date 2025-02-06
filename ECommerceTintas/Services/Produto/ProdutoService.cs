@@ -1,7 +1,7 @@
 using ECommerceTintas.Data;
 using ECommerceTintas.Dto.Produto;
 using ECommerceTintas.Models;
-using ECommerceTintas.Models.Produto;
+using ECommerceTintas.Models.Produtos;
 using ECommerceTintas.Models.Validators;
 using Microsoft.EntityFrameworkCore;
 
@@ -29,7 +29,7 @@ namespace ECommerceTintas.Services.Produto
                     Descricao = produto.Descricao,
                     Preco = produto.Preco,
                     QuantidadeEmEstoque = produto.QuantidadeEmEstoque,
-                    Categoria = produto.Categoria,  
+                    Tipo = produto.Tipo,  
                     Fabricante = produto.Fabricante,
                     CodigoProduto = produto.CodigoProduto,
                     DataDeValidade = produto.DataDeValidade
@@ -83,7 +83,7 @@ namespace ECommerceTintas.Services.Produto
                     Descricao = produtoDto.Descricao,
                     Preco = produtoDto.Preco,
                     QuantidadeEmEstoque = produtoDto.QuantidadeEmEstoque,
-                    Categoria = produtoDto.Categoria,
+                    Tipo = produtoDto.Tipo,
                     Fabricante = produtoDto.Fabricante,
                     CodigoProduto = produtoDto.CodigoProduto,
                     DataDeValidade = produtoDto.DataDeValidade
@@ -160,7 +160,7 @@ namespace ECommerceTintas.Services.Produto
                 produtoExistente.Descricao = atualizarProduto.Descricao;
                 produtoExistente.Preco = atualizarProduto.Preco;
                 produtoExistente.QuantidadeEmEstoque = atualizarProduto.QuantidadeEmEstoque;
-                produtoExistente.Categoria = atualizarProduto.Categoria;
+                produtoExistente.Tipo = atualizarProduto.Tipo;
                 produtoExistente.Fabricante = atualizarProduto.Fabricante;
                 produtoExistente.CodigoProduto = atualizarProduto.CodigoProduto;
                 produtoExistente.DataDeValidade = atualizarProduto.DataDeValidade;
@@ -189,31 +189,6 @@ namespace ECommerceTintas.Services.Produto
                 resposta.status = false;
                 return resposta;
             }
-        }
-
-        Task<ResponseModel<List<ProdutoDto>>> IProdutoInterface.ObterListaDeProdutos()
-        {
-            throw new NotImplementedException();
-        }
-
-        Task<ResponseModel<ProdutoModel>> IProdutoInterface.BuscarProdutoPorId(int idProduto)
-        {
-            throw new NotImplementedException();
-        }
-
-        Task<ResponseModel<ProdutoModel>> IProdutoInterface.CadastrarProduto(CadastrarProdutoDto novoProduto)
-        {
-            throw new NotImplementedException();
-        }
-
-        Task<ResponseModel<ProdutoModel>> IProdutoInterface.ExcluirProduto(int idProduto)
-        {
-            throw new NotImplementedException();
-        }
-
-        Task<ResponseModel<ProdutoModel>> IProdutoInterface.AtualizarProduto(AtualizarProdutoDto atualizarProduto, int idProduto)
-        {
-            throw new NotImplementedException();
         }
     }
 }

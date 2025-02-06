@@ -1,4 +1,5 @@
-using ECommerceTintas.Models.Produto;
+using ECommerceTintas.Models.Enum;
+
 namespace ECommerceTintas.Dto.Produto;
 
 public class ProdutoDto
@@ -11,5 +12,5 @@ public class ProdutoDto
     public string Fabricante { get; set; } = null!;
     public int CodigoProduto { get; set; }
     public DateOnly? DataDeValidade { get; set; }
-    public CategoriaProduto Categoria { get; set; }
+    public ETipoCategoriaProduto Tipo { get; set; }
 }

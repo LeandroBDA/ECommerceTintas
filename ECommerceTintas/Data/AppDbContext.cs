@@ -1,4 +1,4 @@
-﻿using ECommerceTintas.Models.Produto;
+﻿using ECommerceTintas.Models.Produtos;
 using ECommerceTintas.Models.Usuario;
 using Microsoft.EntityFrameworkCore;
 

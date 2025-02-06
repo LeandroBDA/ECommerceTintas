@@ -1,6 +1,6 @@
 using ECommerceTintas.Dto.Produto;
 using ECommerceTintas.Models;
-using ECommerceTintas.Models.Produto;
+using ECommerceTintas.Models.Produtos;
 using ECommerceTintas.Services.Produto;
 using Microsoft.AspNetCore.Mvc;
 

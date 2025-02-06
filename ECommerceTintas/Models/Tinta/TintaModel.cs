@@ -1,7 +1,10 @@
-namespace ECommerceTintas.Models.Produto;
+using ECommerceTintas.Models.Enum;
+using ECommerceTintas.Models.Produtos;
+
+namespace ECommerceTintas.Models.Tinta;
     public class TintaModel : ProdutoModel
     {
-        public string TipoTinta { get; set; } = null!;
+        public ETipoDeTinta TipoDeTinta { get; set; }
         public string Cor { get; set; } = null!; 
         public string Base { get; set; } = null!;
         public bool UsoExterno { get; set; }

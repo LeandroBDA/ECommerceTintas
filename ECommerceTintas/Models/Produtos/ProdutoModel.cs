@@ -1,6 +1,7 @@
+using ECommerceTintas.Models.Enum;
 using ECommerceTintas.Models.Validators;
 
-namespace ECommerceTintas.Models.Produto;
+namespace ECommerceTintas.Models.Produtos;
 
 public class ProdutoModel
 {
@@ -9,7 +10,7 @@ public class ProdutoModel
     public string Descricao { get; set; } = null!;
     public decimal Preco { get; set; }
     public int QuantidadeEmEstoque { get; set; }
-    public CategoriaProduto Categoria { get; set; }
+    public ETipoCategoriaProduto Tipo { get; set; }
     public string Fabricante { get; set; } = null!;
     public int CodigoProduto { get; set; }
     public DateOnly? DataDeValidade { get; set; }

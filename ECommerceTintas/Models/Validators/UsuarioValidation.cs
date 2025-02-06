@@ -75,27 +75,27 @@ public class UsuarioValidation : AbstractValidator<UsuarioModel>
                 .NotEmpty().WithMessage("O campo E-mail é obrigatório.")
                 .Matches(@"^[^@\s]+@[^@\s]+\.[^@\s]+$").WithMessage("O campo E-mail deve ser um endereço de e-mail válido.");
 
-            RuleFor(cliente => cliente.Telefone)
+            RuleFor(u => u.Telefone)
                 .NotEmpty().WithMessage("O telefone é obrigatório.");
 
-            RuleFor(cliente => cliente.Endereco)
+            RuleFor(u => u.Endereco)
                 .NotEmpty().WithMessage("O endereço é obrigatório.")
                 .MaximumLength(200).WithMessage("O endereço deve ter no máximo 200 caracteres.");
 
-            RuleFor(cliente => cliente.Complemento)
+            RuleFor(u => u.Complemento)
                 .MaximumLength(100).WithMessage("O complemento deve ter no máximo 100 caracteres.");
             
-            RuleFor(cliente => cliente.Numero)
+            RuleFor(u => u.Numero)
                 .NotEmpty().WithMessage("O número é obrigatório");
 
-            RuleFor(cliente => cliente.Cep)
+            RuleFor(u => u.Cep)
                 .NotEmpty().WithMessage("O CEP é obrigatório.");
 
-            RuleFor(cliente => cliente.Cidade)
+            RuleFor(u => u.Cidade)
                 .NotEmpty().WithMessage("A cidade é obrigatória.")
                 .MaximumLength(100).WithMessage("A cidade deve ter no máximo 100 caracteres.");
 
-            RuleFor(cliente => cliente.Estado)
+            RuleFor(u => u.Estado)
                 .NotEmpty().WithMessage("O estado é obrigatório.")
                 .Length(2).WithMessage("O estado deve ter exatamente 2 caracteres.")
                 .Matches(@"^[A-Z]{2}$").WithMessage("O estado deve ser a sigla em maiúsculas (ex: SP, RJ).");

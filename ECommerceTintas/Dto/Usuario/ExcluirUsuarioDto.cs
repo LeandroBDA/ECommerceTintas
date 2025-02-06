@@ -1,4 +1,4 @@
-﻿namespace ECommerceTintas.Dto.Cliente;
+﻿namespace ECommerceTintas.Dto.Usuario;
 
 public class ExcluirUsuarioDto 
 {

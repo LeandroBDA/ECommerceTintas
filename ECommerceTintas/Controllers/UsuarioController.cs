@@ -1,7 +1,7 @@
 using ECommerceTintas.Dto.Usuario;
 using ECommerceTintas.Models;
 using ECommerceTintas.Models.Usuario;
-using ECommerceTintas.Services.Cliente;
+using ECommerceTintas.Services.Usuarios;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ECommerceTintas.Controllers
@@ -31,10 +31,10 @@ namespace ECommerceTintas.Controllers
             return Ok(resposta);
         }
         
-        [HttpGet("BuscarClientePorId/{idCliente}")]
-        public async Task<ActionResult<ResponseModel<UsuarioDto>>> BuscarUsuariosPorId(Guid idCliente)
+        [HttpGet("BuscarClientePorId/{idUsuario}")]
+        public async Task<ActionResult<ResponseModel<UsuarioDto>>> BuscarUsuariosPorId(int idUsuario)
         {
-            var resposta = await _usuarioInterface.BuscarUsuariosPorId(idCliente);
+            var resposta = await _usuarioInterface.BuscarUsuariosPorId(idUsuario);
 
             if (!resposta.status)
             {
@@ -45,17 +45,17 @@ namespace ECommerceTintas.Controllers
         }
 
 
-        [HttpPut("AtualizarCliente/{idCliente}")]
-        public async Task<ActionResult<ResponseModel<UsuarioModel>>> AtualizarUsuario([FromForm] AtualizarUsuarioDto atualizarUsuario, Guid idCliente)
+        [HttpPut("AtualizarCliente/{idUsuario}")]
+        public async Task<ActionResult<ResponseModel<UsuarioModel>>> AtualizarUsuario([FromForm] AtualizarUsuarioDto atualizarUsuario, int idUsuario)
         {
-            var resposta = await _usuarioInterface.AtualizarUsuario(atualizarUsuario, idCliente);
+            var resposta = await _usuarioInterface.AtualizarUsuario(atualizarUsuario, idUsuario);
             return Ok(resposta);
         }
 
-        [HttpDelete("ExcluirCliente/{idCliente}")]
-        public async Task<ActionResult<ResponseModel<UsuarioModel>>> ExcluirUsuario(Guid idCliente)
+        [HttpDelete("ExcluirCliente/{idUsuario}")]
+        public async Task<ActionResult<ResponseModel<UsuarioModel>>> ExcluirUsuario(int idUsuario)
         {
-            var resposta = await _usuarioInterface.ExcluirUsuario(idCliente);
+            var resposta = await _usuarioInterface.ExcluirUsuario(idUsuario);
             return Ok(resposta);
         }
     }
