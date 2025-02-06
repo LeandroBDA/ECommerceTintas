@@ -285,3 +285,9 @@ C:\Users\intel\RiderProjects\ECommerceTintas\ECommerceTintas\obj\Debug\net8.0\EC
 C:\Users\intel\RiderProjects\ECommerceTintas\ECommerceTintas\obj\Debug\net8.0\ECommerceTintas.genruntimeconfig.cache
 C:\Users\intel\RiderProjects\ECommerceTintas\ECommerceTintas\obj\Debug\net8.0\ref\ECommerceTintas.dll
 C:\Users\intel\RiderProjects\ECommerceTintas\ECommerceTintas\bin\Debug\net8.0\FluentValidation.dll
+C:\Users\intel\RiderProjects\ECommerceTintas\ECommerceTintas\bin\Debug\net8.0\QRCoder.dll
+C:\Users\intel\RiderProjects\ECommerceTintas\ECommerceTintas\bin\Debug\net8.0\SkiaSharp.dll
+C:\Users\intel\RiderProjects\ECommerceTintas\ECommerceTintas\bin\Debug\net8.0\runtimes\osx\native\libSkiaSharp.dylib
+C:\Users\intel\RiderProjects\ECommerceTintas\ECommerceTintas\bin\Debug\net8.0\runtimes\win-arm64\native\libSkiaSharp.dll
+C:\Users\intel\RiderProjects\ECommerceTintas\ECommerceTintas\bin\Debug\net8.0\runtimes\win-x64\native\libSkiaSharp.dll
+C:\Users\intel\RiderProjects\ECommerceTintas\ECommerceTintas\bin\Debug\net8.0\runtimes\win-x86\native\libSkiaSharp.dll

@@ -75,6 +75,14 @@
               "target": "Package",
               "version": "[8.0.7, )"
             },
+            "QRCoder": {
+              "target": "Package",
+              "version": "[1.6.0, )"
+            },
+            "SkiaSharp": {
+              "target": "Package",
+              "version": "[3.118.0-preview.2.3, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.6.2, )"
