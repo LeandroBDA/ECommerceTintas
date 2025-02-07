@@ -1,4 +1,5 @@
 ﻿using ECommerceTintas.Models.MaterialDePintura;
+using ECommerceTintas.Models.Pedidos;
 using ECommerceTintas.Models.Produtos;
 using ECommerceTintas.Models.Tinta;
 using ECommerceTintas.Models.Usuario;
@@ -17,4 +18,6 @@ public class AppDbContext : DbContext
     public DbSet<ProdutoModel> Produtos { get; set; }
     public DbSet<TintaModel> Tintas { get; set; }
     public DbSet<MaterialDePinturaModel> MateriaisDePintura { get; set; }
+    public DbSet<PedidoModel> Pedidos { get; set; }
+    public DbSet<ItemPedidoModel> ItemPedidos { get; set; }
 }
