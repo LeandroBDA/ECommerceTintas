@@ -1,6 +1,6 @@
 namespace ECommerceTintas.Dto.Produto;
 
-public class ExcluirProdutoDto
+public class BuscarMaterialDePinturaPorId
 {
     public int Id { get; set; }
 }

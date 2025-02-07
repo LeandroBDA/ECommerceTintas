@@ -1,4 +1,6 @@
-﻿using ECommerceTintas.Models.Produtos;
+﻿using ECommerceTintas.Models.MaterialDePintura;
+using ECommerceTintas.Models.Produtos;
+using ECommerceTintas.Models.Tinta;
 using ECommerceTintas.Models.Usuario;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,4 +15,6 @@ public class AppDbContext : DbContext
     
     public DbSet<UsuarioModel> Usuarios { get; set; }
     public DbSet<ProdutoModel> Produtos { get; set; }
+    public DbSet<TintaModel> Tintas { get; set; }
+    public DbSet<MaterialDePinturaModel> MateriaisDePintura { get; set; }
 }
