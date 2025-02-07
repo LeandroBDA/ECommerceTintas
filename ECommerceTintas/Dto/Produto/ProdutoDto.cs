@@ -13,4 +13,6 @@ public class ProdutoDto
     public int CodigoProduto { get; set; }
     public DateOnly? DataDeValidade { get; set; }
     public ETipoCategoriaProduto Tipo { get; set; }
+    public string ImagemUrl { get; set; } = null!;
+
 }

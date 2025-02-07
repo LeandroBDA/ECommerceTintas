@@ -5,6 +5,7 @@ using ECommerceTintas.Models.Produtos;
 using ECommerceTintas.Models.Validators;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace ECommerceTintas.Services.Produto
 {
     public class ProdutoService : IProdutoInterface
@@ -32,7 +33,8 @@ namespace ECommerceTintas.Services.Produto
                     Tipo = produto.Tipo,  
                     Fabricante = produto.Fabricante,
                     CodigoProduto = produto.CodigoProduto,
-                    DataDeValidade = produto.DataDeValidade
+                    DataDeValidade = produto.DataDeValidade,
+                    ImagemUrl = produto.ImagemUrl 
                 }).ToList();
 
                 resposta.Dados = produtoDto;
@@ -47,36 +49,14 @@ namespace ECommerceTintas.Services.Produto
             }
         }
 
-        public async Task<ResponseModel<ProdutoModel>> BuscarProdutoPorId(int idProduto)
+        public async Task<ResponseModel<ProdutoModel>> CadastrarProduto(CadastrarProdutoDto produtoDto, IFormFile? imagem)
         {
             var resposta = new ResponseModel<ProdutoModel>();
             try
             {
-                var produto = await _context.Produtos.FindAsync(idProduto);
-                if (produto == null)
-                {
-                    resposta.Mensagem = "Produto não encontrado";
-                    resposta.status = false;
-                    return resposta;
-                }
+                string imagemUrl = imagem != null ? await SalvarImagem(imagem) : string.Empty;
 
-                resposta.Dados = produto;
-                resposta.Mensagem = "Produto encontrado com sucesso";
-                return resposta;
-            }
-            catch (Exception ex)
-            {
-                resposta.Mensagem = ex.Message;
-                resposta.status = false;
-                return resposta;
-            }
-        }
 
-        public async Task<ResponseModel<ProdutoModel>> CadastrarProduto(CadastrarProdutoDto produtoDto)
-        {
-            var resposta = new ResponseModel<ProdutoModel>();
-            try
-            {
                 var novoProduto = new ProdutoModel
                 {
                     Nome = produtoDto.Nome,
@@ -86,7 +66,8 @@ namespace ECommerceTintas.Services.Produto
                     Tipo = produtoDto.Tipo,
                     Fabricante = produtoDto.Fabricante,
                     CodigoProduto = produtoDto.CodigoProduto,
-                    DataDeValidade = produtoDto.DataDeValidade
+                    DataDeValidade = produtoDto.DataDeValidade,
+                    ImagemUrl = imagemUrl 
                 };
 
                 var validator = new ProdutoValidation();
@@ -115,35 +96,7 @@ namespace ECommerceTintas.Services.Produto
             }
         }
 
-        public async Task<ResponseModel<ProdutoModel>> ExcluirProduto(int idProduto)
-        {
-            var resposta = new ResponseModel<ProdutoModel>();
-            try
-            {
-                var produto = await _context.Produtos.FindAsync(idProduto);
-                if (produto == null)
-                {
-                    resposta.Mensagem = "Produto não encontrado para exclusão";
-                    resposta.status = false;
-                    return resposta;
-                }
-
-                _context.Produtos.Remove(produto);
-                await _context.SaveChangesAsync();
-
-                resposta.Dados = produto;
-                resposta.Mensagem = "Produto excluído com sucesso";
-                return resposta;
-            }
-            catch (Exception ex)
-            {
-                resposta.Mensagem = ex.Message;
-                resposta.status = false;
-                return resposta;
-            }
-        }
-
-        public async Task<ResponseModel<ProdutoModel>> AtualizarProduto(AtualizarProdutoDto atualizarProduto, int idProduto)
+        public async Task<ResponseModel<ProdutoModel>> AtualizarProduto(AtualizarProdutoDto atualizarProduto, int idProduto, IFormFile? imagem)
         {
             var resposta = new ResponseModel<ProdutoModel>();
             try
@@ -164,6 +117,12 @@ namespace ECommerceTintas.Services.Produto
                 produtoExistente.Fabricante = atualizarProduto.Fabricante;
                 produtoExistente.CodigoProduto = atualizarProduto.CodigoProduto;
                 produtoExistente.DataDeValidade = atualizarProduto.DataDeValidade;
+
+                if (imagem != null)
+                {
+                    string imagemUrl = await SalvarImagem(imagem);
+                    produtoExistente.ImagemUrl = imagemUrl;
+                }
 
                 var validator = new ProdutoValidation();
                 var validationResult = validator.Validate(produtoExistente);
@@ -189,6 +148,45 @@ namespace ECommerceTintas.Services.Produto
                 resposta.status = false;
                 return resposta;
             }
+        }
+
+        private async Task<string> SalvarImagem(IFormFile imagem)
+        {
+            var pastaDestino = Path.Combine("wwwroot", "imagens");
+            if (!Directory.Exists(pastaDestino))
+            {
+                Directory.CreateDirectory(pastaDestino);
+            }
+
+            string nomeArquivo = Guid.NewGuid().ToString() + Path.GetExtension(imagem.FileName);
+            string caminhoCompleto = Path.Combine(pastaDestino, nomeArquivo);
+
+            using (var stream = new FileStream(caminhoCompleto, FileMode.Create))
+            {
+                await imagem.CopyToAsync(stream);
+            }
+
+            return $"/imagens/{nomeArquivo}";
+        }
+
+        public Task<ResponseModel<ProdutoModel>> BuscarProdutoPorId(int idProduto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<ResponseModel<ProdutoModel>> CadastrarProduto(CadastrarProdutoDto novoProduto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<ResponseModel<ProdutoModel>> ExcluirProduto(int idProduto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<ResponseModel<ProdutoModel>> AtualizarProduto(AtualizarProdutoDto atualizarProduto, int idProduto)
+        {
+            throw new NotImplementedException();
         }
     }
 }
