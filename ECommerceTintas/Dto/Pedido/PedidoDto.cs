@@ -1,3 +1,4 @@
+using ECommerceTintas.Dto.ItemPedido;
 namespace ECommerceTintas.Dto.Pedido
 {
     public class PedidoDto

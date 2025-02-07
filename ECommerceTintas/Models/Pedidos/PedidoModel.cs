@@ -8,23 +8,23 @@ namespace ECommerceTintas.Models.Pedidos
     public class PedidoModel
     {
         [Key]
-        public int Id { get; set; } // Identificador único do pedido
+        public int Id { get; set; } 
         
         [Required]
-        public int UsuarioId { get; set; } // FK do usuário que fez o pedido
+        public int UsuarioId { get; set; } 
         
         [ForeignKey("UsuarioId")]
-        public UsuarioModel Usuario { get; set; } = null!; // Relacionamento com usuário
+        public UsuarioModel Usuario { get; set; } = null!; 
         
         [Required]
-        public DateTime DataPedido { get; set; } = DateTime.Now; // Data do pedido
+        public DateTime DataPedido { get; set; } = DateTime.Now; 
         
         [Required]
-        public decimal ValorTotal { get; set; } // Soma do preço dos produtos no pedido
+        public decimal ValorTotal { get; set; } 
         
         [Required]
-        public EStatusPedido Status { get; set; } // Status do pedido (Pendente, Pago, Cancelado)
+        public EStatusPedido Status { get; set; } 
         
-        public List<ItemPedidoModel> Itens { get; set; } = new(); // Lista de itens no pedido
+        public List<ItemPedidoModel> Itens { get; set; } = new(); 
     }
 }

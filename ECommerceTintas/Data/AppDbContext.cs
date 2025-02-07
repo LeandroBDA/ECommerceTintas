@@ -19,5 +19,5 @@ public class AppDbContext : DbContext
     public DbSet<TintaModel> Tintas { get; set; }
     public DbSet<MaterialDePinturaModel> MateriaisDePintura { get; set; }
     public DbSet<PedidoModel> Pedidos { get; set; }
-    public DbSet<ItemPedidoModel> ItemPedidos { get; set; }
+    public DbSet<ItemPedidoModel> ItensPedido { get; set; }
 }

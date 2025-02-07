@@ -1,4 +1,4 @@
-namespace ECommerceTintas.Dto.Pedido
+namespace ECommerceTintas.Dto.ItemPedido
 {
     public class ItemPedidoDto
     {
