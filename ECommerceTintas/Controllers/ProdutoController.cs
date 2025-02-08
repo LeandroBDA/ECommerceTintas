@@ -36,7 +36,7 @@ namespace ECommerceTintas.Controllers
                 produtoDto.ImagemUrl = imagemUrl;
             }
 
-            var resposta = await _produtoInterface.CadastrarProduto(produtoDto);
+            var resposta = await _produtoInterface.CadastrarProduto(produtoDto, imagem);
             return Ok(resposta);
         }
 
@@ -65,7 +65,7 @@ namespace ECommerceTintas.Controllers
                 atualizarProduto.ImagemUrl = imagemUrl;
             }
 
-            var resposta = await _produtoInterface.AtualizarProduto(atualizarProduto, idProduto);
+            var resposta = await _produtoInterface.AtualizarProduto(atualizarProduto, idProduto, imagem);
             return Ok(resposta);
         }
 

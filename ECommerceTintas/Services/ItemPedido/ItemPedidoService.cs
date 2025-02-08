@@ -5,7 +5,6 @@ using ECommerceTintas.Models.Pedidos;
 using Microsoft.EntityFrameworkCore;
 
 
-
 namespace ECommerceTintas.Services.ItemPedido
 {
     public class ItemPedidoService : IItemPedidoInterface

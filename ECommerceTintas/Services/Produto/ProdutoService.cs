@@ -49,6 +49,31 @@ namespace ECommerceTintas.Services.Produto
             }
         }
 
+        public async Task<ResponseModel<ProdutoModel>> BuscarProdutoPorId(int idProduto)
+        {
+            var resposta = new ResponseModel<ProdutoModel>();
+            try
+            {
+                var produto = await _context.Produtos.FindAsync(idProduto);
+                if (produto == null)
+                {
+                    resposta.Mensagem = "Protudo não encontrado";
+                    resposta.status = false;
+                    return resposta;
+                }
+
+                resposta.Dados = produto;
+                resposta.Mensagem = "Produto encontrado com sucesso";
+                return resposta;
+            }
+            catch (Exception ex)
+            {
+                resposta.Mensagem = ex.Message;
+                resposta.status = false;
+                return resposta;
+            }
+        }
+
         public async Task<ResponseModel<ProdutoModel>> CadastrarProduto(CadastrarProdutoDto produtoDto, IFormFile? imagem)
         {
             var resposta = new ResponseModel<ProdutoModel>();
@@ -86,6 +111,34 @@ namespace ECommerceTintas.Services.Produto
 
                 resposta.Dados = novoProduto;
                 resposta.Mensagem = "Produto cadastrado com sucesso";
+                return resposta;
+            }
+            catch (Exception ex)
+            {
+                resposta.Mensagem = ex.Message;
+                resposta.status = false;
+                return resposta;
+            }
+        }
+
+        public async Task<ResponseModel<ProdutoModel>> ExcluirProduto(int idProduto)
+        {
+            var resposta = new ResponseModel<ProdutoModel>();
+            try
+            {
+                var produto = await _context.Produtos.FindAsync(idProduto);
+                if (produto == null)
+                {
+                    resposta.Mensagem = "Produto não encontrado para exclusão";
+                    resposta.status = false;
+                    return resposta;
+                }
+
+                _context.Produtos.Remove(produto);
+                await _context.SaveChangesAsync();
+
+                resposta.Dados = produto;
+                resposta.Mensagem = "Produto excluído com sucesso";
                 return resposta;
             }
             catch (Exception ex)
@@ -167,26 +220,6 @@ namespace ECommerceTintas.Services.Produto
             }
 
             return $"/imagens/{nomeArquivo}";
-        }
-
-        public Task<ResponseModel<ProdutoModel>> BuscarProdutoPorId(int idProduto)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<ResponseModel<ProdutoModel>> CadastrarProduto(CadastrarProdutoDto novoProduto)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<ResponseModel<ProdutoModel>> ExcluirProduto(int idProduto)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<ResponseModel<ProdutoModel>> AtualizarProduto(AtualizarProdutoDto atualizarProduto, int idProduto)
-        {
-            throw new NotImplementedException();
         }
     }
 }

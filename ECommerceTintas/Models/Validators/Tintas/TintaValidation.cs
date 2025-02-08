@@ -1,7 +1,7 @@
 using ECommerceTintas.Models.Tinta;
 using FluentValidation;
 
-namespace ECommerceTintas.Models.Validators;
+namespace ECommerceTintas.Models.Validators.Tintas;
 public class TintaValidation : AbstractValidator<TintaModel>
 {
     public TintaValidation()

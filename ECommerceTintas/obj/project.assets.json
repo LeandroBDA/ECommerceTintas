@@ -8451,19 +8451,19 @@
     ]
   },
   "packageFolders": {
-    "/home/isaac/.nuget/packages/": {}
+    "C:\\Users\\intel\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/isaac/Downloads/ECommerceTintas/ECommerceTintas/ECommerceTintas.csproj",
+      "projectUniqueName": "C:\\Users\\intel\\RiderProjects\\ECommerceTintas\\ECommerceTintas\\ECommerceTintas.csproj",
       "projectName": "ECommerceTintas",
-      "projectPath": "/home/isaac/Downloads/ECommerceTintas/ECommerceTintas/ECommerceTintas.csproj",
-      "packagesPath": "/home/isaac/.nuget/packages/",
-      "outputPath": "/home/isaac/Downloads/ECommerceTintas/ECommerceTintas/obj/",
+      "projectPath": "C:\\Users\\intel\\RiderProjects\\ECommerceTintas\\ECommerceTintas\\ECommerceTintas.csproj",
+      "packagesPath": "C:\\Users\\intel\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\intel\\RiderProjects\\ECommerceTintas\\ECommerceTintas\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/isaac/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\intel\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -8556,7 +8556,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.405/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

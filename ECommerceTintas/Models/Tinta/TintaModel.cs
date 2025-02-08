@@ -4,6 +4,7 @@ using ECommerceTintas.Models.Produtos;
 namespace ECommerceTintas.Models.Tinta;
     public class TintaModel : ProdutoModel
     {
+        public int Id { get; set; }
         public ETipoDeTinta TipoDeTinta { get; set; }
         public string Cor { get; set; } = null!; 
         public string Base { get; set; } = null!;

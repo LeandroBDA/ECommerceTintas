@@ -1,7 +1,7 @@
 using ECommerceTintas.Models.MaterialDePintura;
 using FluentValidation;
 
-namespace ECommerceTintas.Models.Validators;
+namespace ECommerceTintas.Models.Validators.MaterialDePinturaValidation;
 public class MaterialDePinturaValidation : AbstractValidator<MaterialDePinturaModel>
 {
     public MaterialDePinturaValidation()

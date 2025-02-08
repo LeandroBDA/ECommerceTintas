@@ -1,5 +1,9 @@
 using ECommerceTintas.Data;
+using ECommerceTintas.Services.ItemPedido;
+using ECommerceTintas.Services.MaterialDePintura;
+using ECommerceTintas.Services.Pedido;
 using ECommerceTintas.Services.Produto;
+using ECommerceTintas.Services.Tinta;
 using ECommerceTintas.Services.Usuarios;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,8 +18,12 @@ builder.Services.AddSwaggerGen();
 // Adicione esta linha para o serviço de autorização
 builder.Services.AddAuthorization();
 
+builder.Services.AddScoped<ITintaInterface, TintaService>();
+builder.Services.AddScoped<IPedidoInterface, PedidoService>();
 builder.Services.AddScoped<IProdutoInterface, ProdutoService>();
 builder.Services.AddScoped<IUsuarioInterface, UsuarioService>();
+builder.Services.AddScoped<IItemPedidoInterface, ItemPedidoService>();
+builder.Services.AddScoped<IMaterialDePinturaInterface, MaterialDePinturaService>();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 {

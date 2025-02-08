@@ -1,7 +1,7 @@
 using ECommerceTintas.Models.Pedidos;
 using FluentValidation;
 
-namespace ECommerceTintas.Models.Validators
+namespace ECommerceTintas.Models.Validators.ItemPedidos
 {
     public class ItemPedidoValidation : AbstractValidator<ItemPedidoModel>
     {

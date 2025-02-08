@@ -2,7 +2,7 @@ using ECommerceTintas.Data;
 using ECommerceTintas.Dto.MaterialDePintura;
 using ECommerceTintas.Models;
 using ECommerceTintas.Models.MaterialDePintura;
-using ECommerceTintas.Models.Validators;
+using ECommerceTintas.Models.Validators.MaterialDePinturaValidation;
 using Microsoft.EntityFrameworkCore;
 
 namespace ECommerceTintas.Services.MaterialDePintura

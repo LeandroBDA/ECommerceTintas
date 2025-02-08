@@ -2,7 +2,7 @@ using ECommerceTintas.Data;
 using ECommerceTintas.Dto.Tinta;
 using ECommerceTintas.Models;
 using ECommerceTintas.Models.Tinta;
-using ECommerceTintas.Models.Validators;
+using ECommerceTintas.Models.Validators.Tintas;
 using Microsoft.EntityFrameworkCore;
 
 namespace ECommerceTintas.Services.Tinta
@@ -49,9 +49,9 @@ namespace ECommerceTintas.Services.Tinta
             }
         }
 
-        public async Task<ResponseModel<TintaDto>> BuscarTintaPorId(int idTinta)
+        public async Task<ResponseModel<TintaModel>> BuscarTintaPorId(int idTinta)
         {
-            var resposta = new ResponseModel<TintaDto>();
+            var resposta = new ResponseModel<TintaModel>();
             try
             {
                 var tinta = await _context.Tintas.FindAsync(idTinta);
@@ -62,7 +62,7 @@ namespace ECommerceTintas.Services.Tinta
                     return resposta;
                 }
 
-                resposta.Dados = new TintaDto
+                resposta.Dados = new TintaModel
                 {
                     Id = tinta.Id,
                     Nome = tinta.Nome,
@@ -208,11 +208,6 @@ namespace ECommerceTintas.Services.Tinta
                 resposta.status = false;
                 return resposta;
             }
-        }
-
-        Task<ResponseModel<TintaModel>> ITintaInterface.BuscarTintaPorId(int idTinta)
-        {
-            throw new NotImplementedException();
         }
     }
 }
