@@ -1,15 +1,11 @@
 using ECommerceTintas.Models.Enum;
+using ECommerceTintas.Dto.Produto;
+
 
 namespace ECommerceTintas.Dto.MaterialDePintura
 {
-    public class MaterialDePinturaDto
+    public class MaterialDePinturaDto : ProdutoDto
     {
-        public int Id { get; set; }
-        public string Nome { get; set; } = null!;
-        public string Descricao { get; set; } = null!;
-        public decimal Preco { get; set; }
-        public int QuantidadeEmEstoque { get; set; }
-        public string Fabricante { get; set; } = null!;
         public ETipoCategoriaProduto TipoDeMaterialDeTinta { get; set; }
         public string Tamanho { get; set; } = null!;
         public string? Material { get; set; }

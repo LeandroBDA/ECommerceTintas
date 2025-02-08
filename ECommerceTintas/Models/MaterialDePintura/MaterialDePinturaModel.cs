@@ -5,7 +5,6 @@ namespace ECommerceTintas.Models.MaterialDePintura;
 
     public class MaterialDePinturaModel : ProdutoModel
 {
-    public int Id { get; set; }
     public ETipoCategoriaProduto TipoDeMaterialDeTinta { get; set; } 
     public string Tamanho { get; set; } = null!; 
     public string? Material { get; set; } 

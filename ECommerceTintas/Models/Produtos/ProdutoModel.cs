@@ -8,8 +8,8 @@ public class ProdutoModel
     public int Id { get; init; }
     public string Nome { get; set; } = null!;
     public string Descricao { get; set; } = null!;
-    public decimal Preco { get; set; }
-    public int QuantidadeEmEstoque { get; set; }
+    public decimal? Preco { get; set; }
+    public int? QuantidadeEmEstoque { get; set; }
     public ETipoCategoriaProduto Tipo { get; set; }
     public string Fabricante { get; set; } = null!;
     public int CodigoProduto { get; set; }
