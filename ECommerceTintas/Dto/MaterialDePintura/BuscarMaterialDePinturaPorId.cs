@@ -1,6 +1,8 @@
+using ECommerceTintas.Dto.Produto;
+
 namespace ECommerceTintas.Dto.MaterialDePintura;
 
-public class BuscarMaterialDePinturaPorId
+public class BuscarMaterialDePinturaPorId : BuscarProdutoPorId
 {
-    public int Id { get; set; }
+ 
 }

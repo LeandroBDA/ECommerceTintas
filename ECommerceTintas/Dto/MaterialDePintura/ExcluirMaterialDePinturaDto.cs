@@ -1,6 +1,8 @@
+using ECommerceTintas.Dto.Produto;
+
 namespace ECommerceTintas.Dto.MaterialDePintura;
 
-public class ExcluirMaterialDePintura
+public class ExcluirMaterialDePintura : ExcluirProdutoDto
 {
-    public int Id { get; set; }
+
 }

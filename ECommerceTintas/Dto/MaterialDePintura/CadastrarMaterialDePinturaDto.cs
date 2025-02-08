@@ -3,7 +3,7 @@ using ECommerceTintas.Models.Enum;
 
 namespace ECommerceTintas.Dto.MaterialDePintura
 {
-    public class CadastrarMaterialDePinturaDto : ProdutoDto
+    public class CadastrarMaterialDePinturaDto : CadastrarProdutoDto
     {
         public ETipoCategoriaProduto TipoDeMaterialDeTinta { get; set; }
         public string Tamanho { get; set; } = null!;

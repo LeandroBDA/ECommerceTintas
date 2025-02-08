@@ -1,6 +1,8 @@
+using ECommerceTintas.Dto.Produto;
+
 namespace ECommerceTintas.Dto.Tinta;
 
-public class ExcluirTintaDto
+public class ExcluirTintaDto : ExcluirProdutoDto
 {
-    public int Id { get; set; }
+
 }

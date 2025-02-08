@@ -3,7 +3,7 @@ using ECommerceTintas.Models.Enum;
 
 namespace ECommerceTintas.Dto.Tinta
 {
-    public class AtualizarTintaDto : ProdutoDto
+    public class AtualizarTintaDto : AtualizarProdutoDto
     {
          public ETipoDeTinta? TipoDeTinta { get; set; }
         public string? Cor { get; set; }
