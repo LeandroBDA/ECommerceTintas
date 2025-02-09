@@ -48,7 +48,7 @@ namespace ECommerceTintas.Migrations
 
                     b.HasIndex("ProdutoId");
 
-                    b.ToTable("ItensPedido", (string)null);
+                    b.ToTable("ItensPedido");
                 });
 
             modelBuilder.Entity("ECommerceTintas.Models.Pedidos.PedidoModel", b =>
@@ -75,7 +75,7 @@ namespace ECommerceTintas.Migrations
 
                     b.HasIndex("UsuarioId");
 
-                    b.ToTable("Pedidos", (string)null);
+                    b.ToTable("Pedidos");
                 });
 
             modelBuilder.Entity("ECommerceTintas.Models.Produtos.ProdutoModel", b =>
@@ -96,11 +96,6 @@ namespace ECommerceTintas.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasMaxLength(34)
-                        .HasColumnType("nvarchar(34)");
-
                     b.Property<string>("Fabricante")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -113,10 +108,10 @@ namespace ECommerceTintas.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("Preco")
+                    b.Property<decimal?>("Preco")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("QuantidadeEmEstoque")
+                    b.Property<int?>("QuantidadeEmEstoque")
                         .HasColumnType("int");
 
                     b.Property<int>("Tipo")
@@ -126,9 +121,7 @@ namespace ECommerceTintas.Migrations
 
                     b.ToTable("Produtos", (string)null);
 
-                    b.HasDiscriminator().HasValue("ProdutoModel");
-
-                    b.UseTphMappingStrategy();
+                    b.UseTptMappingStrategy();
                 });
 
             modelBuilder.Entity("ECommerceTintas.Models.Usuario.UsuarioModel", b =>
@@ -186,7 +179,7 @@ namespace ECommerceTintas.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Usuarios", (string)null);
+                    b.ToTable("Usuarios");
                 });
 
             modelBuilder.Entity("ECommerceTintas.Models.MaterialDePintura.MaterialDePinturaModel", b =>
@@ -218,7 +211,7 @@ namespace ECommerceTintas.Migrations
                     b.Property<int>("TipoDeMaterialDeTinta")
                         .HasColumnType("int");
 
-                    b.HasDiscriminator().HasValue("MaterialDePinturaModel");
+                    b.ToTable("MateriaisDePintura", (string)null);
                 });
 
             modelBuilder.Entity("ECommerceTintas.Models.Tinta.TintaModel", b =>
@@ -242,13 +235,7 @@ namespace ECommerceTintas.Migrations
                     b.Property<bool>("UsoExterno")
                         .HasColumnType("bit");
 
-                    b.ToTable("Produtos", null, t =>
-                        {
-                            t.Property("Cor")
-                                .HasColumnName("TintaModel_Cor");
-                        });
-
-                    b.HasDiscriminator().HasValue("TintaModel");
+                    b.ToTable("Tintas", (string)null);
                 });
 
             modelBuilder.Entity("ECommerceTintas.Models.Pedidos.ItemPedidoModel", b =>
@@ -279,6 +266,24 @@ namespace ECommerceTintas.Migrations
                         .IsRequired();
 
                     b.Navigation("Usuario");
+                });
+
+            modelBuilder.Entity("ECommerceTintas.Models.MaterialDePintura.MaterialDePinturaModel", b =>
+                {
+                    b.HasOne("ECommerceTintas.Models.Produtos.ProdutoModel", null)
+                        .WithOne()
+                        .HasForeignKey("ECommerceTintas.Models.MaterialDePintura.MaterialDePinturaModel", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("ECommerceTintas.Models.Tinta.TintaModel", b =>
+                {
+                    b.HasOne("ECommerceTintas.Models.Produtos.ProdutoModel", null)
+                        .WithOne()
+                        .HasForeignKey("ECommerceTintas.Models.Tinta.TintaModel", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ECommerceTintas.Models.Pedidos.PedidoModel", b =>
