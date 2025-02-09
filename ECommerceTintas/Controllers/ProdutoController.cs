@@ -27,7 +27,7 @@ namespace ECommerceTintas.Controllers
 
         [HttpPost("CadastrarProduto")]
         public async Task<ActionResult<ResponseModel<ProdutoModel>>> CadastrarProduto(
-            [FromForm] CadastrarProdutoDto produtoDto,
+            [FromBody] CadastrarProdutoDto produtoDto,
             IFormFile? imagem)
         {
             if (imagem != null)
@@ -55,7 +55,7 @@ namespace ECommerceTintas.Controllers
 
         [HttpPut("AtualizarProduto/{idProduto}")]
         public async Task<ActionResult<ResponseModel<ProdutoModel>>> AtualizarProduto(
-            [FromForm] AtualizarProdutoDto atualizarProduto,
+            [FromBody] AtualizarProdutoDto atualizarProduto,
             int idProduto,
             IFormFile? imagem)
         {

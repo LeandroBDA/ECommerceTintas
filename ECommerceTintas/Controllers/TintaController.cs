@@ -45,7 +45,7 @@ namespace ECommerceTintas.Controllers
         }
 
         [HttpPut("AtualizarTinta/{idTinta}")]
-        public async Task<ActionResult<ResponseModel<TintaModel>>> AtualizarTinta([FromForm] AtualizarTintaDto atualizarTinta, int idTinta)
+        public async Task<ActionResult<ResponseModel<TintaModel>>> AtualizarTinta([FromBody] AtualizarTintaDto atualizarTinta, int idTinta)
         {
             var resposta = await _tintaInterface.AtualizarTinta(atualizarTinta, idTinta);
             return Ok(resposta);

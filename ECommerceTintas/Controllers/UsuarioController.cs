@@ -46,7 +46,8 @@ namespace ECommerceTintas.Controllers
 
 
         [HttpPut("AtualizarCliente/{idUsuario}")]
-        public async Task<ActionResult<ResponseModel<UsuarioModel>>> AtualizarUsuario([FromForm] AtualizarUsuarioDto atualizarUsuario, int idUsuario)
+        public async Task<ActionResult<ResponseModel<UsuarioModel>>> AtualizarUsuario([FromBody] AtualizarUsuarioDto atualizarUsuario,
+            int idUsuario)
         {
             var resposta = await _usuarioInterface.AtualizarUsuario(atualizarUsuario, idUsuario);
             return Ok(resposta);
