@@ -1,11 +1,58 @@
 {
   "Version": 1,
-  "Hash": "N3onZ18bAVssYOSmIKDWOOkfxHof+a5zjHO6Iba1dp0=",
+  "Hash": "wjD10y46S5G8sQnFcFRWbmxPItroLU4AJdOfFzOPfXk=",
   "Source": "ECommerceTintas",
   "BasePath": "_content/ECommerceTintas",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "ECommerceTintas\\wwwroot",
+      "Source": "ECommerceTintas",
+      "ContentRoot": "C:\\Users\\intel\\RiderProjects\\ECommerceTintas\\ECommerceTintas\\wwwroot\\",
+      "BasePath": "_content/ECommerceTintas",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\intel\\RiderProjects\\ECommerceTintas\\ECommerceTintas\\wwwroot\\qrcodes\\161a7a7c-1181-4f4f-b6eb-cb81274e17bf.png",
+      "SourceId": "ECommerceTintas",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\intel\\RiderProjects\\ECommerceTintas\\ECommerceTintas\\wwwroot\\",
+      "BasePath": "_content/ECommerceTintas",
+      "RelativePath": "qrcodes/161a7a7c-1181-4f4f-b6eb-cb81274e17bf.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\qrcodes\\161a7a7c-1181-4f4f-b6eb-cb81274e17bf.png"
+    },
+    {
+      "Identity": "C:\\Users\\intel\\RiderProjects\\ECommerceTintas\\ECommerceTintas\\wwwroot\\qrcodes\\b10159d9-d508-41d7-8803-babbcda3afd8.png",
+      "SourceId": "ECommerceTintas",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\intel\\RiderProjects\\ECommerceTintas\\ECommerceTintas\\wwwroot\\",
+      "BasePath": "_content/ECommerceTintas",
+      "RelativePath": "qrcodes/b10159d9-d508-41d7-8803-babbcda3afd8.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\qrcodes\\b10159d9-d508-41d7-8803-babbcda3afd8.png"
+    }
+  ]
 }

@@ -291,3 +291,4 @@ C:\Users\intel\RiderProjects\ECommerceTintas\ECommerceTintas\bin\Debug\net8.0\ru
 C:\Users\intel\RiderProjects\ECommerceTintas\ECommerceTintas\bin\Debug\net8.0\runtimes\win-arm64\native\libSkiaSharp.dll
 C:\Users\intel\RiderProjects\ECommerceTintas\ECommerceTintas\bin\Debug\net8.0\runtimes\win-x64\native\libSkiaSharp.dll
 C:\Users\intel\RiderProjects\ECommerceTintas\ECommerceTintas\bin\Debug\net8.0\runtimes\win-x86\native\libSkiaSharp.dll
+C:\Users\intel\RiderProjects\ECommerceTintas\ECommerceTintas\bin\Debug\net8.0\ECommerceTintas.staticwebassets.runtime.json
