@@ -10,7 +10,6 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -27,7 +26,18 @@ builder.Services.AddScoped<IMaterialDePinturaInterface, MaterialDePinturaService
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefautConnection"));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
+
+// Configuração do CORS - permitindo requisições de qualquer origem
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()  // Permite qualquer origem (ajuste conforme necessário)
+              .AllowAnyMethod()  // Permite qualquer método HTTP (GET, POST, etc.)
+              .AllowAnyHeader(); // Permite qualquer cabeçalho
+    });
 });
 
 var app = builder.Build();
@@ -41,9 +51,11 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+// Aplica a política de CORS configurada
+app.UseCors("AllowAll");
+
 app.UseAuthorization();
 
 app.MapControllers();
 
 app.Run();
-
