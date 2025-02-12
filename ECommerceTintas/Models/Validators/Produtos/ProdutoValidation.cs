@@ -1,7 +1,7 @@
 using ECommerceTintas.Models.Produtos;
 using FluentValidation;
 
-namespace ECommerceTintas.Models.Validators;
+namespace ECommerceTintas.Models.Validators.Produtos;
 public class ProdutoValidation : AbstractValidator<ProdutoModel>
 {
     public ProdutoValidation()
@@ -30,10 +30,5 @@ public class ProdutoValidation : AbstractValidator<ProdutoModel>
         RuleFor(produto => produto.DataDeValidade)
             .GreaterThan(DateOnly.FromDateTime(DateTime.Now)).When(p => p.DataDeValidade.HasValue)
             .WithMessage("A data de validade deve ser futura.");
-        
-        RuleFor(produto => produto.ImagemUrl)
-            .NotEmpty().WithMessage("A URL da imagem é obrigatória.")
-            .Must(url => Uri.TryCreate(url, UriKind.Absolute, out _)).WithMessage("A URL da imagem não é válida.");
-
     }
 }

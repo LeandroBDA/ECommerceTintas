@@ -21,7 +21,7 @@ namespace ECommerceTintas.Services.Tinta
             var resposta = new ResponseModel<List<TintaDto>>();
             try
             {
-                var tintas = await _context.Tintas.ToListAsync();
+                var tintas = await _context.Tinta.ToListAsync();
                 var tintasDto = tintas.Select(tinta => new TintaDto
                 {
                     Id = tinta.Id,
@@ -54,7 +54,7 @@ namespace ECommerceTintas.Services.Tinta
             var resposta = new ResponseModel<TintaModel>();
             try
             {
-                var tinta = await _context.Tintas.FindAsync(idTinta);
+                var tinta = await _context.Tinta.FindAsync(idTinta);
                 if (tinta == null)
                 {
                     resposta.Mensagem = "Tinta não encontrada.";
@@ -117,7 +117,7 @@ namespace ECommerceTintas.Services.Tinta
                     return resposta;
                 }
 
-                await _context.Tintas.AddAsync(novaTinta);
+                await _context.Tinta.AddAsync(novaTinta);
                 await _context.SaveChangesAsync();
 
                 resposta.Dados = novaTinta;
@@ -137,7 +137,7 @@ namespace ECommerceTintas.Services.Tinta
             var resposta = new ResponseModel<TintaModel>();
             try
             {
-                var tinta = await _context.Tintas.FindAsync(idTinta);
+                var tinta = await _context.Tinta.FindAsync(idTinta);
                 if (tinta == null)
                 {
                     resposta.Mensagem = "Tinta não encontrada.";
@@ -145,7 +145,7 @@ namespace ECommerceTintas.Services.Tinta
                     return resposta;
                 }
 
-                _context.Tintas.Remove(tinta);
+                _context.Tinta.Remove(tinta);
                 await _context.SaveChangesAsync();
 
                 resposta.Dados = tinta;
@@ -165,7 +165,7 @@ namespace ECommerceTintas.Services.Tinta
             var resposta = new ResponseModel<TintaModel>();
             try
             {
-                var tintaExistente = await _context.Tintas.FindAsync(idTinta);
+                var tintaExistente = await _context.Tinta.FindAsync(idTinta);
                 if (tintaExistente == null)
                 {
                     resposta.Mensagem = "Tinta não encontrada.";
@@ -195,7 +195,7 @@ namespace ECommerceTintas.Services.Tinta
                     return resposta;
                 }
 
-                _context.Tintas.Update(tintaExistente);
+                _context.Tinta.Update(tintaExistente);
                 await _context.SaveChangesAsync();
 
                 resposta.Dados = tintaExistente;

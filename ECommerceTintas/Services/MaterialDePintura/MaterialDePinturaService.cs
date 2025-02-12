@@ -21,7 +21,7 @@ namespace ECommerceTintas.Services.MaterialDePintura
             var resposta = new ResponseModel<List<MaterialDePinturaDto>>();
             try
             {
-                var materiais = await _context.MateriaisDePintura.ToListAsync();
+                var materiais = await _context.MaterialDePintura.ToListAsync();
                 var materiaisDto = materiais.Select(material => new MaterialDePinturaDto
                 {
                     Id = material.Id,
@@ -54,7 +54,7 @@ namespace ECommerceTintas.Services.MaterialDePintura
             var resposta = new ResponseModel<MaterialDePinturaModel>();
             try
             {
-                var material = await _context.MateriaisDePintura.FindAsync(idMaterial);
+                var material = await _context.MaterialDePintura.FindAsync(idMaterial);
                 if (material == null)
                 {
                     resposta.Mensagem = "Material não encontrado";
@@ -104,7 +104,7 @@ namespace ECommerceTintas.Services.MaterialDePintura
                     return resposta;
                 }
 
-                await _context.MateriaisDePintura.AddAsync(novoMaterial);
+                await _context.MaterialDePintura.AddAsync(novoMaterial);
                 await _context.SaveChangesAsync();
 
                 resposta.Dados = novoMaterial;
@@ -124,7 +124,7 @@ namespace ECommerceTintas.Services.MaterialDePintura
             var resposta = new ResponseModel<MaterialDePinturaModel>();
             try
             {
-                var material = await _context.MateriaisDePintura.FindAsync(idMaterial);
+                var material = await _context.MaterialDePintura.FindAsync(idMaterial);
                 if (material == null)
                 {
                     resposta.Mensagem = "Material não encontrado para exclusão";
@@ -132,7 +132,7 @@ namespace ECommerceTintas.Services.MaterialDePintura
                     return resposta;
                 }
 
-                _context.MateriaisDePintura.Remove(material);
+                _context.MaterialDePintura.Remove(material);
                 await _context.SaveChangesAsync();
 
                 resposta.Dados = material;
@@ -152,7 +152,7 @@ namespace ECommerceTintas.Services.MaterialDePintura
             var resposta = new ResponseModel<MaterialDePinturaModel>();
             try
             {
-                var materialExistente = await _context.MateriaisDePintura.FindAsync(idMaterial);
+                var materialExistente = await _context.MaterialDePintura.FindAsync(idMaterial);
                 if (materialExistente == null)
                 {
                     resposta.Mensagem = "Material não encontrado para atualização";
@@ -182,7 +182,7 @@ namespace ECommerceTintas.Services.MaterialDePintura
                     return resposta;
                 }
 
-                _context.MateriaisDePintura.Update(materialExistente);
+                _context.MaterialDePintura.Update(materialExistente);
                 await _context.SaveChangesAsync();
 
                 resposta.Dados = materialExistente;

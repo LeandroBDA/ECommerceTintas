@@ -6,13 +6,13 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ECommerceTintas.Migrations
 {
     /// <inheritdoc />
-    public partial class Add_New_Migrations : Migration
+    public partial class Add_New_Migration_Refatorada : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Pedidos",
+                name: "Pedido",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -24,9 +24,9 @@ namespace ECommerceTintas.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Pedidos", x => x.Id);
+                    table.PrimaryKey("PK_Pedido", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Pedidos_Usuarios_UsuarioId",
+                        name: "FK_Pedido_Usuarios_UsuarioId",
                         column: x => x.UsuarioId,
                         principalTable: "Usuarios",
                         principalColumn: "Id",
@@ -46,8 +46,7 @@ namespace ECommerceTintas.Migrations
                     Tipo = table.Column<int>(type: "int", nullable: false),
                     Fabricante = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CodigoProduto = table.Column<int>(type: "int", nullable: false),
-                    DataDeValidade = table.Column<DateOnly>(type: "date", nullable: true),
-                    ImagemUrl = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    DataDeValidade = table.Column<DateOnly>(type: "date", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -55,7 +54,7 @@ namespace ECommerceTintas.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ItensPedido",
+                name: "ItenPedido",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -67,15 +66,15 @@ namespace ECommerceTintas.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ItensPedido", x => x.Id);
+                    table.PrimaryKey("PK_ItenPedido", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ItensPedido_Pedidos_PedidoId",
+                        name: "FK_ItenPedido_Pedido_PedidoId",
                         column: x => x.PedidoId,
-                        principalTable: "Pedidos",
+                        principalTable: "Pedido",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ItensPedido_Produtos_ProdutoId",
+                        name: "FK_ItenPedido_Produtos_ProdutoId",
                         column: x => x.ProdutoId,
                         principalTable: "Produtos",
                         principalColumn: "Id",
@@ -130,18 +129,18 @@ namespace ECommerceTintas.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_ItensPedido_PedidoId",
-                table: "ItensPedido",
+                name: "IX_ItenPedido_PedidoId",
+                table: "ItenPedido",
                 column: "PedidoId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ItensPedido_ProdutoId",
-                table: "ItensPedido",
+                name: "IX_ItenPedido_ProdutoId",
+                table: "ItenPedido",
                 column: "ProdutoId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Pedidos_UsuarioId",
-                table: "Pedidos",
+                name: "IX_Pedido_UsuarioId",
+                table: "Pedido",
                 column: "UsuarioId");
         }
 
@@ -149,7 +148,7 @@ namespace ECommerceTintas.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "ItensPedido");
+                name: "ItenPedido");
 
             migrationBuilder.DropTable(
                 name: "MateriaisDePintura");
@@ -158,7 +157,7 @@ namespace ECommerceTintas.Migrations
                 name: "Tintas");
 
             migrationBuilder.DropTable(
-                name: "Pedidos");
+                name: "Pedido");
 
             migrationBuilder.DropTable(
                 name: "Produtos");

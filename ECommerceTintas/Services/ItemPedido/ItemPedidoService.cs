@@ -21,7 +21,7 @@ namespace ECommerceTintas.Services.ItemPedido
             var resposta = new ResponseModel<List<ItemPedidoDto>>();
             try
             {
-                var itens = await _context.ItensPedido.ToListAsync();
+                var itens = await _context.ItenPedido.ToListAsync();
                 resposta.Dados = itens.Select(item => new ItemPedidoDto
                 {
                     ProdutoId = item.ProdutoId,
@@ -52,7 +52,7 @@ namespace ECommerceTintas.Services.ItemPedido
                     PrecoUnitario = novoItemPedido.PrecoUnitario
                 };
 
-                await _context.ItensPedido.AddAsync(item);
+                await _context.ItenPedido.AddAsync(item);
                 await _context.SaveChangesAsync();
 
                 resposta.Dados = item;
@@ -72,7 +72,7 @@ namespace ECommerceTintas.Services.ItemPedido
             var resposta = new ResponseModel<ItemPedidoModel>();
             try
             {
-                var item = await _context.ItensPedido.FindAsync(idItemPedido);
+                var item = await _context.ItenPedido.FindAsync(idItemPedido);
                 if (item == null)
                 {
                     resposta.Mensagem = "Item do pedido não encontrado";
@@ -83,7 +83,7 @@ namespace ECommerceTintas.Services.ItemPedido
                 item.Quantidade = atualizarItemPedido.Quantidade;
                 item.PrecoUnitario = atualizarItemPedido.PrecoUnitario;
 
-                _context.ItensPedido.Update(item);
+                _context.ItenPedido.Update(item);
                 await _context.SaveChangesAsync();
 
                 resposta.Dados = item;
@@ -103,7 +103,7 @@ namespace ECommerceTintas.Services.ItemPedido
             var resposta = new ResponseModel<ItemPedidoModel>();
             try
             {
-                var item = await _context.ItensPedido.FindAsync(idItemPedido);
+                var item = await _context.ItenPedido.FindAsync(idItemPedido);
                 if (item == null)
                 {
                     resposta.Mensagem = "Item do pedido não encontrado";
@@ -111,7 +111,7 @@ namespace ECommerceTintas.Services.ItemPedido
                     return resposta;
                 }
 
-                _context.ItensPedido.Remove(item);
+                _context.ItenPedido.Remove(item);
                 await _context.SaveChangesAsync();
 
                 resposta.Mensagem = "Item do pedido excluído com sucesso";

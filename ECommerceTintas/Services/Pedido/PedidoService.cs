@@ -23,7 +23,7 @@ namespace ECommerceTintas.Services.Pedido
             var resposta = new ResponseModel<List<PedidoDto>>();
             try
             {
-                var pedidos = await _context.Pedidos.Include(p => p.Itens).ToListAsync();
+                var pedidos = await _context.Pedido.Include(p => p.Itens).ToListAsync();
                 var pedidoDtos = pedidos.Select(pedido => new PedidoDto
                 {
                     Id = pedido.Id,
@@ -80,7 +80,7 @@ namespace ECommerceTintas.Services.Pedido
                     return resposta;
                 }
 
-                await _context.Pedidos.AddAsync(pedido);
+                await _context.Pedido.AddAsync(pedido);
                 await _context.SaveChangesAsync();
 
                 resposta.Dados = pedido;
@@ -100,7 +100,7 @@ namespace ECommerceTintas.Services.Pedido
     var resposta = new ResponseModel<PedidoModel>();
     try
     {
-        var pedido = await _context.Pedidos.FindAsync(idPedido);
+        var pedido = await _context.Pedido.FindAsync(idPedido);
         if (pedido == null)
         {
             resposta.Mensagem = "Pedido não encontrado";
@@ -120,7 +120,7 @@ namespace ECommerceTintas.Services.Pedido
             return resposta;
         }
 
-        _context.Pedidos.Update(pedido);
+        _context.Pedido.Update(pedido);
         await _context.SaveChangesAsync();
 
         resposta.Dados = pedido;
@@ -139,7 +139,7 @@ namespace ECommerceTintas.Services.Pedido
             var resposta = new ResponseModel<PedidoModel>();
             try
             {
-                var pedido = await _context.Pedidos.FindAsync(idPedido);
+                var pedido = await _context.Pedido.FindAsync(idPedido);
                 if (pedido == null)
                 {
                     resposta.Mensagem = "Pedido não encontrado";
@@ -147,7 +147,7 @@ namespace ECommerceTintas.Services.Pedido
                     return resposta;
                 }
 
-                _context.Pedidos.Remove(pedido);
+                _context.Pedido.Remove(pedido);
                 await _context.SaveChangesAsync();
 
                 resposta.Mensagem = "Pedido excluído com sucesso";
@@ -166,7 +166,7 @@ namespace ECommerceTintas.Services.Pedido
             var resposta = new ResponseModel<PedidoModel>();
             try
             {
-                var pedido = await _context.Pedidos.Include(p => p.Itens).FirstOrDefaultAsync(p => p.Id == idPedido);
+                var pedido = await _context.Pedido.Include(p => p.Itens).FirstOrDefaultAsync(p => p.Id == idPedido);
                 if (pedido == null)
                 {
                     resposta.Mensagem = "Pedido não encontrado";

@@ -1,4 +1,5 @@
 using ECommerceTintas.Models.Tinta;
+using ECommerceTintas.Models.Validators.Produtos;
 using FluentValidation;
 
 namespace ECommerceTintas.Models.Validators.Tintas;

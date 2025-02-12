@@ -48,7 +48,7 @@ namespace ECommerceTintas.Migrations
 
                     b.HasIndex("ProdutoId");
 
-                    b.ToTable("ItensPedido");
+                    b.ToTable("ItenPedido");
                 });
 
             modelBuilder.Entity("ECommerceTintas.Models.Pedidos.PedidoModel", b =>
@@ -75,7 +75,7 @@ namespace ECommerceTintas.Migrations
 
                     b.HasIndex("UsuarioId");
 
-                    b.ToTable("Pedidos");
+                    b.ToTable("Pedido");
                 });
 
             modelBuilder.Entity("ECommerceTintas.Models.Produtos.ProdutoModel", b =>
@@ -97,10 +97,6 @@ namespace ECommerceTintas.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Fabricante")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ImagemUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ECommerceTintas.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250209215729_Add_New_Migrations")]
-    partial class Add_New_Migrations
+    [Migration("20250212004653_Add_New_Migration_Refatorada")]
+    partial class Add_New_Migration_Refatorada
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -51,7 +51,7 @@ namespace ECommerceTintas.Migrations
 
                     b.HasIndex("ProdutoId");
 
-                    b.ToTable("ItensPedido");
+                    b.ToTable("ItenPedido");
                 });
 
             modelBuilder.Entity("ECommerceTintas.Models.Pedidos.PedidoModel", b =>
@@ -78,7 +78,7 @@ namespace ECommerceTintas.Migrations
 
                     b.HasIndex("UsuarioId");
 
-                    b.ToTable("Pedidos");
+                    b.ToTable("Pedido");
                 });
 
             modelBuilder.Entity("ECommerceTintas.Models.Produtos.ProdutoModel", b =>

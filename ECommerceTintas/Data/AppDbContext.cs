@@ -15,11 +15,11 @@ public class AppDbContext : DbContext
     }
     
     public DbSet<UsuarioModel> Usuarios { get; set; }
-    public DbSet<ProdutoModel> Produtos { get; set; }
-    public DbSet<TintaModel> Tintas { get; set; }  
-    public DbSet<MaterialDePinturaModel> MateriaisDePintura { get; set; }
-    public DbSet<PedidoModel> Pedidos { get; set; }
-    public DbSet<ItemPedidoModel> ItensPedido { get; set; }
+    public DbSet<ProdutoModel> Produto { get; set; }
+    public DbSet<TintaModel> Tinta { get; set; }  
+    public DbSet<MaterialDePinturaModel> MaterialDePintura { get; set; }
+    public DbSet<PedidoModel> Pedido { get; set; }
+    public DbSet<ItemPedidoModel> ItenPedido { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

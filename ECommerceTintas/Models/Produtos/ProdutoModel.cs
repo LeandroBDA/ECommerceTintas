@@ -1,5 +1,6 @@
 using ECommerceTintas.Models.Enum;
 using ECommerceTintas.Models.Validators;
+using ECommerceTintas.Models.Validators.Produtos;
 
 namespace ECommerceTintas.Models.Produtos;
 

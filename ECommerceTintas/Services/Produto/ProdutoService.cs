@@ -3,6 +3,7 @@ using ECommerceTintas.Dto.Produto;
 using ECommerceTintas.Models;
 using ECommerceTintas.Models.Produtos;
 using ECommerceTintas.Models.Validators;
+using ECommerceTintas.Models.Validators.Produtos;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -22,7 +23,7 @@ namespace ECommerceTintas.Services.Produto
             var resposta = new ResponseModel<List<ProdutoDto>>();
             try
             {
-                var produtos = await _context.Produtos.ToListAsync();
+                var produtos = await _context.Produto.ToListAsync();
                 var produtoDto = produtos.Select(produto => new ProdutoDto
                 {
                     Id = produto.Id,
@@ -53,7 +54,7 @@ namespace ECommerceTintas.Services.Produto
             var resposta = new ResponseModel<ProdutoModel>();
             try
             {
-                var produto = await _context.Produtos.FindAsync(idProduto);
+                var produto = await _context.Produto.FindAsync(idProduto);
                 if (produto == null)
                 {
                     resposta.Mensagem = "Protudo não encontrado";
@@ -102,7 +103,7 @@ namespace ECommerceTintas.Services.Produto
                     return resposta;
                 }
 
-                await _context.Produtos.AddAsync(novoProduto);
+                await _context.Produto.AddAsync(novoProduto);
                 await _context.SaveChangesAsync();
 
                 resposta.Dados = novoProduto;
@@ -122,7 +123,7 @@ namespace ECommerceTintas.Services.Produto
             var resposta = new ResponseModel<ProdutoModel>();
             try
             {
-                var produto = await _context.Produtos.FindAsync(idProduto);
+                var produto = await _context.Produto.FindAsync(idProduto);
                 if (produto == null)
                 {
                     resposta.Mensagem = "Produto não encontrado para exclusão";
@@ -130,7 +131,7 @@ namespace ECommerceTintas.Services.Produto
                     return resposta;
                 }
 
-                _context.Produtos.Remove(produto);
+                _context.Produto.Remove(produto);
                 await _context.SaveChangesAsync();
 
                 resposta.Dados = produto;
@@ -150,7 +151,7 @@ namespace ECommerceTintas.Services.Produto
             var resposta = new ResponseModel<ProdutoModel>();
             try
             {
-                var produtoExistente = await _context.Produtos.FindAsync(idProduto);
+                var produtoExistente = await _context.Produto.FindAsync(idProduto);
                 if (produtoExistente == null)
                 {
                     resposta.Mensagem = "Produto não encontrado para atualização";
@@ -179,7 +180,7 @@ namespace ECommerceTintas.Services.Produto
                     return resposta;
                 }
 
-                _context.Produtos.Update(produtoExistente);
+                _context.Produto.Update(produtoExistente);
                 await _context.SaveChangesAsync();
 
                 resposta.Dados = produtoExistente;
