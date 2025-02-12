@@ -1,27 +1,27 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\intel\\RiderProjects\\ECommerceTintas\\ECommerceTintas\\wwwroot\\qrcodes\\161a7a7c-1181-4f4f-b6eb-cb81274e17bf.png",
-      "PackagePath": "staticwebassets\\qrcodes\\161a7a7c-1181-4f4f-b6eb-cb81274e17bf.png"
+      "Id": "/home/isaac/Downloads/ECommerceTintas/ECommerceTintas/wwwroot/qrcodes/161a7a7c-1181-4f4f-b6eb-cb81274e17bf.png",
+      "PackagePath": "staticwebassets/qrcodes/161a7a7c-1181-4f4f-b6eb-cb81274e17bf.png"
     },
     {
-      "Id": "C:\\Users\\intel\\RiderProjects\\ECommerceTintas\\ECommerceTintas\\wwwroot\\qrcodes\\b10159d9-d508-41d7-8803-babbcda3afd8.png",
-      "PackagePath": "staticwebassets\\qrcodes\\b10159d9-d508-41d7-8803-babbcda3afd8.png"
+      "Id": "/home/isaac/Downloads/ECommerceTintas/ECommerceTintas/wwwroot/qrcodes/b10159d9-d508-41d7-8803-babbcda3afd8.png",
+      "PackagePath": "staticwebassets/qrcodes/b10159d9-d508-41d7-8803-babbcda3afd8.png"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.ECommerceTintas.Microsoft.AspNetCore.StaticWebAssets.props",
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.ECommerceTintas.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.ECommerceTintas.props",
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.build.ECommerceTintas.props",
       "PackagePath": "build\\ECommerceTintas.props"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.ECommerceTintas.props",
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.ECommerceTintas.props",
       "PackagePath": "buildMultiTargeting\\ECommerceTintas.props"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.ECommerceTintas.props",
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.ECommerceTintas.props",
       "PackagePath": "buildTransitive\\ECommerceTintas.props"
     }
   ],

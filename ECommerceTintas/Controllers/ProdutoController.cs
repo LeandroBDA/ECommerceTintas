@@ -27,8 +27,7 @@ namespace ECommerceTintas.Controllers
 
         [HttpPost("CadastrarProduto")]
         public async Task<ActionResult<ResponseModel<ProdutoModel>>> CadastrarProduto(
-            [FromBody] CadastrarProdutoDto produtoDto,
-            IFormFile? imagem)
+            [FromBody] CadastrarProdutoDto produtoDto)
         {
             var resposta = await _produtoInterface.CadastrarProduto(produtoDto);
             return Ok(resposta);
