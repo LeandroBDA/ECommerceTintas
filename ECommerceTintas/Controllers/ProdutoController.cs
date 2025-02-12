@@ -30,13 +30,7 @@ namespace ECommerceTintas.Controllers
             [FromBody] CadastrarProdutoDto produtoDto,
             IFormFile? imagem)
         {
-            if (imagem != null)
-            {
-                string imagemUrl = await SalvarImagem(imagem);
-                produtoDto.ImagemUrl = imagemUrl;
-            }
-
-            var resposta = await _produtoInterface.CadastrarProduto(produtoDto, imagem);
+            var resposta = await _produtoInterface.CadastrarProduto(produtoDto);
             return Ok(resposta);
         }
 
@@ -56,16 +50,9 @@ namespace ECommerceTintas.Controllers
         [HttpPut("AtualizarProduto/{idProduto}")]
         public async Task<ActionResult<ResponseModel<ProdutoModel>>> AtualizarProduto(
             [FromBody] AtualizarProdutoDto atualizarProduto,
-            int idProduto,
-            IFormFile? imagem)
+            int idProduto)
         {
-            if (imagem != null)
-            {
-                string imagemUrl = await SalvarImagem(imagem);
-                atualizarProduto.ImagemUrl = imagemUrl;
-            }
-
-            var resposta = await _produtoInterface.AtualizarProduto(atualizarProduto, idProduto, imagem);
+            var resposta = await _produtoInterface.AtualizarProduto(atualizarProduto, idProduto);
             return Ok(resposta);
         }
 
@@ -75,24 +62,6 @@ namespace ECommerceTintas.Controllers
             var resposta = await _produtoInterface.ExcluirProduto(idProduto);
             return Ok(resposta);
         }
-
-        private async Task<string> SalvarImagem(IFormFile imagem)
-        {
-            var pastaDestino = Path.Combine("wwwroot", "imagens");
-            if (!Directory.Exists(pastaDestino))
-            {
-                Directory.CreateDirectory(pastaDestino);
-            }
-
-            string nomeArquivo = Guid.NewGuid().ToString() + Path.GetExtension(imagem.FileName);
-            string caminhoCompleto = Path.Combine(pastaDestino, nomeArquivo);
-
-            using (var stream = new FileStream(caminhoCompleto, FileMode.Create))
-            {
-                await imagem.CopyToAsync(stream);
-            }
-
-            return $"/imagens/{nomeArquivo}"; 
-        }
+    
     }
 }

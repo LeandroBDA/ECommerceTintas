@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ECommerceTintas")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3641a4a8e5c0fa7d0b6cfaa06af645351f428ec5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+977e1a2c5cb2520cbd0c35f90f24cb6cc8f4a914")]
 [assembly: System.Reflection.AssemblyProductAttribute("ECommerceTintas")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ECommerceTintas")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

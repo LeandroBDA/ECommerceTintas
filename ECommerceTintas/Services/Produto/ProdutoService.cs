@@ -34,7 +34,6 @@ namespace ECommerceTintas.Services.Produto
                     Fabricante = produto.Fabricante,
                     CodigoProduto = produto.CodigoProduto,
                     DataDeValidade = produto.DataDeValidade,
-                    ImagemUrl = produto.ImagemUrl 
                 }).ToList();
 
                 resposta.Dados = produtoDto;
@@ -74,13 +73,11 @@ namespace ECommerceTintas.Services.Produto
             }
         }
 
-        public async Task<ResponseModel<ProdutoModel>> CadastrarProduto(CadastrarProdutoDto produtoDto, IFormFile? imagem)
+        public async Task<ResponseModel<ProdutoModel>> CadastrarProduto(CadastrarProdutoDto produtoDto)
         {
             var resposta = new ResponseModel<ProdutoModel>();
             try
             {
-                string imagemUrl = imagem != null ? await SalvarImagem(imagem) : string.Empty;
-
 
                 var novoProduto = new ProdutoModel
                 {
@@ -92,7 +89,6 @@ namespace ECommerceTintas.Services.Produto
                     Fabricante = produtoDto.Fabricante,
                     CodigoProduto = produtoDto.CodigoProduto,
                     DataDeValidade = produtoDto.DataDeValidade,
-                    ImagemUrl = imagemUrl 
                 };
 
                 var validator = new ProdutoValidation();
@@ -149,7 +145,7 @@ namespace ECommerceTintas.Services.Produto
             }
         }
 
-        public async Task<ResponseModel<ProdutoModel>> AtualizarProduto(AtualizarProdutoDto atualizarProduto, int idProduto, IFormFile? imagem)
+        public async Task<ResponseModel<ProdutoModel>> AtualizarProduto(AtualizarProdutoDto atualizarProduto, int idProduto)
         {
             var resposta = new ResponseModel<ProdutoModel>();
             try
@@ -171,11 +167,6 @@ namespace ECommerceTintas.Services.Produto
                 produtoExistente.CodigoProduto = atualizarProduto.CodigoProduto;
                 produtoExistente.DataDeValidade = atualizarProduto.DataDeValidade;
 
-                if (imagem != null)
-                {
-                    string imagemUrl = await SalvarImagem(imagem);
-                    produtoExistente.ImagemUrl = imagemUrl;
-                }
 
                 var validator = new ProdutoValidation();
                 var validationResult = validator.Validate(produtoExistente);
@@ -203,23 +194,5 @@ namespace ECommerceTintas.Services.Produto
             }
         }
 
-        private async Task<string> SalvarImagem(IFormFile imagem)
-        {
-            var pastaDestino = Path.Combine("wwwroot", "imagens");
-            if (!Directory.Exists(pastaDestino))
-            {
-                Directory.CreateDirectory(pastaDestino);
-            }
-
-            string nomeArquivo = Guid.NewGuid().ToString() + Path.GetExtension(imagem.FileName);
-            string caminhoCompleto = Path.Combine(pastaDestino, nomeArquivo);
-
-            using (var stream = new FileStream(caminhoCompleto, FileMode.Create))
-            {
-                await imagem.CopyToAsync(stream);
-            }
-
-            return $"/imagens/{nomeArquivo}";
-        }
     }
 }

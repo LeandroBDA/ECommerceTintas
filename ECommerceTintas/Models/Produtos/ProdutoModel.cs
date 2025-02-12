@@ -14,7 +14,7 @@ public class ProdutoModel
     public string Fabricante { get; set; } = null!;
     public int CodigoProduto { get; set; }
     public DateOnly? DataDeValidade { get; set; }
-    public string ImagemUrl { get; set; } = null!;
+
 
     
     public bool Validar(out List<string> erros)
